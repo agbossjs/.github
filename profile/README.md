@@ -23,7 +23,7 @@
 - **Cost control** — per-run and per-day limits in code, exact cost of every call, cheap routing on decision models.
 - **Confidence** — regression suites for every model-answering component, plus evaluation and tracing.
 
-Bring your own backend — no platform, no lock-in. MIT licensed.
+Bring your own backend — no platform, no lock-in. Apache 2.0 licensed.
 
 ## Repositories
 
