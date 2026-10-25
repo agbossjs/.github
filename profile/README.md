@@ -34,8 +34,8 @@
 | Repository | Role in the AGBoss Ecosystem | Status |
 | :--- | :--- | :--- |
 | [**`agbossjs/agboss`**](https://github.com/agbossjs/agboss) | **Framework & CLI:** Core TypeScript runtime (`agboss`), static workflow compiler & CLI (`agboss-cli`: `agboss check`, `agboss eval`, `agboss hub`, `agboss describe`), 10 unit runners (`agboss/testing`), `@EvalSuite` (`agboss/eval`), and 13 bundled AI coding skills | `v0.1.0-rc` in source (`0.0.1` placeholder on npm) |
-| [**`agbossjs/agboss.dev`**](https://github.com/agbossjs/agboss.dev) | **Website & Documentation:** Official documentation ([agboss.dev](https://agboss.dev)), Interactive Feature Explorer (`/features/`), 65 compiler-verified guides & decorator references, `llms.txt`, and `llms-full.txt` | Live (`check:docs` verified) |
-| [**`agbossjs/agboss-examples`**](https://github.com/agbossjs/agboss-examples) | **Executable Proofs:** 7 standalone, CI-verified applications (`01-hello-agboss` through `07-langgraph-migration`) with offline `npm run check`, `npm test`, and `npm run demo` suites | 7 / 7 passing (`P0` + `P1`) |
+| [**`agbossjs/agboss.dev`**](https://github.com/agbossjs/agboss.dev) | **Website & Documentation:** Official documentation ([agboss.dev](https://agboss.dev)), Interactive Feature Explorer (`/features/`), 63 compiler-verified guides & decorator references, `llms.txt`, and `llms-full.txt` | Live (`check:docs` + CI build verified) |
+| [**`agbossjs/agboss-examples`**](https://github.com/agbossjs/agboss-examples) | **Executable Proofs:** 7 standalone, CI-verified applications (`01-hello-agboss` through `07-langgraph-migration`) with offline `npm run check`, `npm test`, and `npm run demo` suites against packed release-candidate tarballs | 7 / 7 passing (`P0` + `P1`) |
 
 ---
 
@@ -85,21 +85,15 @@ Every standalone project in [`agbossjs/agboss-examples`](https://github.com/agbo
 | [**`04-travel-booking-saga`**](https://github.com/agbossjs/agboss-examples/tree/main/04-travel-booking-saga) | Reverse-order LIFO saga compensation (`compensateWith`, `committedBy`), `@Budget` cutoff, `app.cancel()`, SQLite WAL crash recovery, `.joinQuorum({ min: 2, max: 2 })`, and HITL `Channel.withdraw()` |
 | [**`05-cluster-work-stealing`**](https://github.com/agbossjs/agboss-examples/tree/main/05-cluster-work-stealing) | `ChildPlacement.AnyInstance` distributed queue (`SqliteChildExecutionQueueRepository`), recursive `ThisWorkflow` (`maxDepth: 2`), 30s SQLite leases & fencing (`ExecutionLeaseLostError`), `maxConcurrentSteps` backpressure, and `@HealthCheck` |
 | [**`06-enterprise-agent-mesh`**](https://github.com/agbossjs/agboss-examples/tree/main/06-enterprise-agent-mesh) | 3-service mesh (`1-order-gateway`, `2-billing-a2a`, `3-catalog-mcp`) over `@A2AAgent` / `@A2AExpose` & `@McpTool` / `@McpExpose`, Ed25519 `agboss-mesh` JWS envelope, `MeshLoopDetectedError`, MCP `_meta.callId` deduplication, and `agboss check --federation` Blast Radius |
-| [**`07-langgraph-migration`**](https://github.com/agbossjs/agboss-examples/tree/main/07-langgraph-migration) | Side-by-side comparison of raw `@langchain/langgraph` (`before-langgraph/` with 15-field `Annotation.Root` God State, string edges, unbounded `Send()`, dynamic prompts) vs AGBoss (`after-agboss/` with 10 narrow `@Dto`s, `@Router`, `@Action`, `@Channel`, and `agboss check --strict`) |
+| [**`07-langgraph-migration`**](https://github.com/agbossjs/agboss-examples/tree/main/07-langgraph-migration) | Deterministic before/after reference migration comparing raw `@langchain/langgraph` (`before-langgraph/` with 15-field `Annotation.Root` God State, string edges, unbounded `Send()`, dynamic prompts) vs AGBoss (`after-agboss/` with 10 narrow `@Dto`s, `@Router`, `@Action`, `@Channel`, and `agboss check --strict`) |
 
 ---
 
-## Which repositories make up the AGBoss ecosystem?
-
-| Repository | Description |
-| :--- | :--- |
-| [**agbossjs/agboss**](https://github.com/agbossjs/agboss) | Core TypeScript framework (`agboss`), static compiler & CLI (`agboss-cli`: `agboss check`, `agboss eval`, `agboss hub`, `agboss describe`), HarnessDSL (HDSL), 10 unit runners (`agboss/testing`), `@EvalSuite` (`agboss/eval`), and auto-synced `AGENTS.md` + 13 coding-agent skill modules |
-| [**agbossjs/agboss-examples**](https://github.com/agbossjs/agboss-examples) | 7 standalone, CI-verified reference applications (`01-hello-agboss` through `07-langgraph-migration`) proving static graph analysis, PII safety, 5-loop evals, LIFO sagas, cluster work-stealing, multi-service A2A/MCP mesh, and LangGraph migration |
-| [**agbossjs/agboss.dev**](https://github.com/agbossjs/agboss.dev) | Official documentation site ([agboss.dev](https://agboss.dev)), interactive architecture & code explorer, 64 compiler-verified guides & decorator references, [`llms.txt`](https://agboss.dev/llms.txt), and [`llms-full.txt`](https://agboss.dev/llms-full.txt) |
-
 ## Quick start
 
-**Create a new project:**
+> **Pre-release status (`v0.1.0-rc`):** `agboss@0.1.0` and `agboss-cli@0.1.0` are currently in release-candidate preparation in [`agbossjs/agboss`](https://github.com/agbossjs/agboss) (`0.0.1` on npm is an initial registry placeholder). Until `0.1.0` is published to npm, pack the release-candidate tarballs from source (`git clone https://github.com/agbossjs/agboss.git && cd agboss && npm ci && npm run build && npm pack --workspaces`) or run the [`agbossjs/agboss-examples`](https://github.com/agbossjs/agboss-examples) verification pipeline.
+
+**Create a new project (post-`0.1.0` npm publication):**
 
 ```bash
 npx agboss create my-app
@@ -108,7 +102,7 @@ npm install
 npm test
 ```
 
-**Add to an existing project:**
+**Add to an existing project (post-`0.1.0` npm publication):**
 
 ```bash
 npm install agboss
