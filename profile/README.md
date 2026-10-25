@@ -6,19 +6,22 @@
 </p>
 
 <p align="center">
-  <b>Your coding agent writes the graph. AGBoss proves it right.</b><br>
-  Static graph compiler (<code>agboss check</code>) &amp; production runtime that scales to hundreds of nodes on <a href="https://www.langchain.com/langgraph">LangGraph</a>, with its built-in declarative <b>HarnessDSL (HDSL)</b> grammar, <b>7 distributed-systems invariants</b>, <b>5-loop verification funnel</b>, and offline-synced <code>AGENTS.md</code> coding skills.
+  <b>Build complex AI workflows. Catch graph errors before runtime.</b><br>
+  <b>AGBoss</b> is an open-source TypeScript framework with static verification (<code>agboss check</code>) for complex multi-agent workflows on <a href="https://www.langchain.com/langgraph">LangGraph</a>, combining dependency injection, typed dataflow (<b>HarnessDSL</b>), LIFO saga compensation, and deterministic testing &amp; evaluation.
+</p>
+
+<p align="center">
+  <code>Apache-2.0</code> · <code>TypeScript</code> · <code>v0.1.0-rc (pre-release in source; 0.0.1 placeholder on npm)</code>
 </p>
 
 <p align="center">
   <a href="https://agboss.dev">Documentation</a> ·
+  <a href="https://agboss.dev/features/">Feature Explorer</a> ·
   <a href="https://agboss.dev/concepts/architecture/">7 Principles</a> ·
   <a href="https://agboss.dev/concepts/verification-funnel/">5-Loop Verification Funnel</a> ·
-  <a href="https://agboss.dev/concepts/ai-coding-skills/">AI Coding Skills</a> ·
   <a href="https://github.com/agbossjs/agboss-examples">Examples (<code>01..07</code>)</a> ·
   <a href="https://agboss.dev/getting-started/quick-start/">Quick Start</a> ·
   <a href="https://agboss.dev/llms.txt"><code>llms.txt</code></a> ·
-  <a href="https://www.npmjs.com/package/agboss">npm (<code>agboss</code>)</a> ·
   <a href="https://x.com/agbossjs">X</a> ·
   <a href="https://www.linkedin.com/company/agbossjs">LinkedIn</a> ·
   <a href="https://www.youtube.com/@agbossjs">YouTube</a>
@@ -26,9 +29,19 @@
 
 ---
 
-## What is AGBoss and HarnessDSL (HDSL)?
+## Core Repositories
 
-**AGBoss** (**Agent Graph Builder Open Source System**) is an open-source TypeScript framework (`npm i agboss`), static graph compiler (`agboss check`), and production runtime on [LangGraph](https://www.langchain.com/langgraph), and **HarnessDSL (HDSL)** is its built-in declarative graph grammar and verification specification (analogous to JSX in React or PSL in Prisma). Engineered for teams building 100+ node multi-agent graphs with AI coding agents (**Codex**, **Cursor**, **Windsurf**, **GitHub Copilot**, **Gemini CLI**, **Claude Code**), AGBoss replaces mutable God State Objects with compile-time Path Scope dominance (`.agboss/types.d.ts`), transactional LIFO sagas, KV-cache prefix invariance, and a 5-loop cost and determinism verification funnel.
+| Repository | Role in the AGBoss Ecosystem | Status |
+| :--- | :--- | :--- |
+| [**`agbossjs/agboss`**](https://github.com/agbossjs/agboss) | **Framework & CLI:** Core TypeScript runtime (`agboss`), static workflow compiler & CLI (`agboss-cli`: `agboss check`, `agboss eval`, `agboss hub`, `agboss describe`), 10 unit runners (`agboss/testing`), `@EvalSuite` (`agboss/eval`), and 13 bundled AI coding skills | `v0.1.0-rc` in source (`0.0.1` placeholder on npm) |
+| [**`agbossjs/agboss.dev`**](https://github.com/agbossjs/agboss.dev) | **Website & Documentation:** Official documentation ([agboss.dev](https://agboss.dev)), Interactive Feature Explorer (`/features/`), 63 compiler-verified guides & decorator references, `llms.txt`, and `llms-full.txt` | Live (`check:docs` + CI build verified) |
+| [**`agbossjs/agboss-examples`**](https://github.com/agbossjs/agboss-examples) | **Executable Proofs:** 7 standalone, CI-verified applications (`01-hello-agboss` through `07-langgraph-migration`) with offline `npm run check`, `npm test`, and `npm run demo` suites against packed release-candidate tarballs | 7 / 7 passing (`P0` + `P1`) |
+
+---
+
+## What is AGBoss?
+
+**AGBoss** (**Agent Graph Builder Open Source System**) is an open-source TypeScript framework (`agboss`) and static workflow compiler (`agboss-cli` / `agboss check`) built on [LangGraph](https://www.langchain.com/langgraph). Its declarative workflow grammar, **HarnessDSL (HDSL)**, replaces shared mutable state bags (`Annotation.Root`) with narrow `@Dto` handoffs, compile-time Path Scope dominance (`.agboss/types.d.ts`), declarative `compensateWith` / `committedBy` LIFO sagas, KV-cache prefix invariance, and a 5-loop verification funnel.
 
 ---
 
@@ -37,7 +50,7 @@
 | # | Architectural Invariant | What `agboss check` & Runtime Enforce | Executable Proof (`agboss-examples`) |
 | :--- | :--- | :--- | :--- |
 | **1** | [**Computational Role Segregation**](https://agboss.dev/concepts/decorators/) | Strictly separates stochastic reasoning (`@Agent`), classification (`@Router`), quorum consensus (`@Arbiter`), and deterministic side effects (`@Action`) | [`01-hello-agboss`](https://github.com/agbossjs/agboss-examples/tree/main/01-hello-agboss) · [`07-langgraph-migration`](https://github.com/agbossjs/agboss-examples/tree/main/07-langgraph-migration) |
-| **2** | [**Path-Scoped SSA Dataflow & Staleness**](https://agboss.dev/concepts/path-scope/) | Proves `100%` of upstream `@Dto` slots on every branch (`[input.missing-on-path]`), emits `Produced<Dto, Producer>`, and invalidates stale loop drafts via `{ about }` (`[input.outdated-on-path]`) | [`02-path-scope-proof`](https://github.com/agbossjs/agboss-examples/tree/main/02-path-scope-proof) |
+| **2** | [**Path-Scoped SSA Dataflow & Staleness**](https://agboss.dev/concepts/path-scope/) | Verifies upstream `@Dto` slots across declared branches (`[input.missing-on-path]`), emits `Produced<Dto, Producer>`, and invalidates stale loop drafts via `{ about }` (`[input.outdated-on-path]`) | [`02-path-scope-proof`](https://github.com/agbossjs/agboss-examples/tree/main/02-path-scope-proof) |
 | **3** | [**Canonical Topology Isomorphism**](https://agboss.dev/concepts/workflow/) | Enforces one chained method call per line (`depth <= 4`), inline chains for `in-degree = 1`, and top-level `flow` entries for `in-degree >= 2` convergence | [`01-hello-agboss`](https://github.com/agbossjs/agboss-examples/tree/main/01-hello-agboss) · [`07-langgraph-migration`](https://github.com/agbossjs/agboss-examples/tree/main/07-langgraph-migration) |
 | **4** | [**Prompt Prefix Cache Invariance**](https://agboss.dev/guides/security-and-pii/) | Rejects dynamic state in system instructions (`[prompt.input-in-instructions]`), canonically sorts tool schemas, and uses deterministic HMAC `replaceWithToken()` PII pseudonymization | [`03-support-refund-desk`](https://github.com/agbossjs/agboss-examples/tree/main/03-support-refund-desk) |
 | **5** | [**Transactional LIFO Sagas & Idempotency**](https://agboss.dev/guides/error-handling-and-rollback/) | Requires `compensateWith` or `committedBy` on side-effecting `@Action` nodes (`[flow.uncompensated-action]`), unwinds completed steps in strict LIFO order, and forbids LLM calls inside `.onQuotaExceeded()` | [`04-travel-booking-saga`](https://github.com/agbossjs/agboss-examples/tree/main/04-travel-booking-saga) |
@@ -50,7 +63,7 @@
 
 Instead of paying live LLM tokens to catch wiring bugs, AGBoss filters every change through a [**5-Loop Cost & Determinism Verification Funnel**](https://agboss.dev/concepts/verification-funnel/) closed by **two production feedback loops**:
 
-1. **Loop 0 — Static Compiler Proof (`agboss check --federation`, `< 1s`, `$0`):** Runs on every file save and proves 100% of graph topology, Path Scope DTOs, saga compensations, and cross-service MCP/A2A mesh contracts before any test runs.
+1. **Loop 0 — Static Compiler Proof (`agboss check --federation`, `< 1s`, `$0`):** Runs on every file save and statically checks declared workflow topology, Path Scope DTOs, saga compensations, and cross-service MCP/A2A mesh contracts before any test runs.
 2. **Loop 1 — Deterministic Harness & Chaos (`npm test`, `~3s`, `$0`):** Runs on every commit without calling a live LLM — combining [10 isolated unit runners](https://agboss.dev/guides/testing-agents/) (`testTool`, `testToolInterceptor`, `testAction`, `testRouter`, `testArbiter`, `testRag`, `testJudge`, `testCompaction`, `testPii`, `testGuardrail`), full-graph `testWith(App)` with `mockLlm`, `ModelFailure` chaos (`429`, timeouts, truncated JSON), `TestConcurrency.inOrder`, multi-pod `{ instances: 2 }` leases, and VCR cassettes locked to Loop 2 by **`[vcr.stale-cassette]`** (`promptHash` + `schemaHash`).
 3. **Loop 2 — Live-Model PR Smoke Gate (`agboss eval run --runs 5 --baseline`, `~1 min`, `$`):** Triggered when `promptHash` or `schemaHash` changes; executes a Fail-Fast `$0 -> $$$` cascade (`requiredTools`/`forbiddenTools`/`toolInvariant` $\to$ `$0` code `@Judge` $\to$ calibrated LLM `@Judge`), compares [`pass^k`](https://agboss.dev/guides/evaluation-and-profiles/) against the cached `main` baseline (`flaky-on-baseline` quarantine), and attaches a self-contained `eval-report.html`.
 4. **Loop 3 — Nightly Polygon (`--runs 20 --metamorphic --chaos`, `~15 min`, `$$`):** Verifies paraphrase trajectory invariance (`--metamorphic`), multi-turn `@Compaction` constraint survival, stale-memory override, live fault recovery (`--chaos`), and silent upstream provider quantization drift across 200+ OpenRouter and JEV decision endpoints.
@@ -72,21 +85,15 @@ Every standalone project in [`agbossjs/agboss-examples`](https://github.com/agbo
 | [**`04-travel-booking-saga`**](https://github.com/agbossjs/agboss-examples/tree/main/04-travel-booking-saga) | Reverse-order LIFO saga compensation (`compensateWith`, `committedBy`), `@Budget` cutoff, `app.cancel()`, SQLite WAL crash recovery, `.joinQuorum({ min: 2, max: 2 })`, and HITL `Channel.withdraw()` |
 | [**`05-cluster-work-stealing`**](https://github.com/agbossjs/agboss-examples/tree/main/05-cluster-work-stealing) | `ChildPlacement.AnyInstance` distributed queue (`SqliteChildExecutionQueueRepository`), recursive `ThisWorkflow` (`maxDepth: 2`), 30s SQLite leases & fencing (`ExecutionLeaseLostError`), `maxConcurrentSteps` backpressure, and `@HealthCheck` |
 | [**`06-enterprise-agent-mesh`**](https://github.com/agbossjs/agboss-examples/tree/main/06-enterprise-agent-mesh) | 3-service mesh (`1-order-gateway`, `2-billing-a2a`, `3-catalog-mcp`) over `@A2AAgent` / `@A2AExpose` & `@McpTool` / `@McpExpose`, Ed25519 `agboss-mesh` JWS envelope, `MeshLoopDetectedError`, MCP `_meta.callId` deduplication, and `agboss check --federation` Blast Radius |
-| [**`07-langgraph-migration`**](https://github.com/agbossjs/agboss-examples/tree/main/07-langgraph-migration) | Side-by-side comparison of raw `@langchain/langgraph` (`before-langgraph/` with 15-field `Annotation.Root` God State, string edges, unbounded `Send()`, dynamic prompts) vs AGBoss (`after-agboss/` with 10 narrow `@Dto`s, `@Router`, `@Action`, `@Channel`, and `agboss check --strict`) |
+| [**`07-langgraph-migration`**](https://github.com/agbossjs/agboss-examples/tree/main/07-langgraph-migration) | Deterministic before/after reference migration comparing raw `@langchain/langgraph` (`before-langgraph/` with 15-field `Annotation.Root` God State, string edges, unbounded `Send()`, dynamic prompts) vs AGBoss (`after-agboss/` with 10 narrow `@Dto`s, `@Router`, `@Action`, `@Channel`, and `agboss check --strict`) |
 
 ---
 
-## Which repositories make up the AGBoss ecosystem?
-
-| Repository | Description |
-| :--- | :--- |
-| [**agbossjs/agboss**](https://github.com/agbossjs/agboss) | Core TypeScript framework (`agboss`), static compiler & CLI (`agboss-cli`: `agboss check`, `agboss eval`, `agboss hub`, `agboss describe`), HarnessDSL (HDSL), 10 unit runners (`agboss/testing`), `@EvalSuite` (`agboss/eval`), and auto-synced `AGENTS.md` + 13 coding-agent skill modules |
-| [**agbossjs/agboss-examples**](https://github.com/agbossjs/agboss-examples) | 7 standalone, CI-verified reference applications (`01-hello-agboss` through `07-langgraph-migration`) proving static graph analysis, PII safety, 5-loop evals, LIFO sagas, cluster work-stealing, multi-service A2A/MCP mesh, and LangGraph migration |
-| [**agbossjs/agboss.dev**](https://github.com/agbossjs/agboss.dev) | Official documentation site ([agboss.dev](https://agboss.dev)), interactive architecture & code explorer, 64 compiler-verified guides & decorator references, [`llms.txt`](https://agboss.dev/llms.txt), and [`llms-full.txt`](https://agboss.dev/llms-full.txt) |
-
 ## Quick start
 
-**Create a new project:**
+> **Pre-release status (`v0.1.0-rc`):** `agboss@0.1.0` and `agboss-cli@0.1.0` are currently in release-candidate preparation in [`agbossjs/agboss`](https://github.com/agbossjs/agboss) (`0.0.1` on npm is an initial registry placeholder). Until `0.1.0` is published to npm, pack the release-candidate tarballs from source (`git clone https://github.com/agbossjs/agboss.git && cd agboss && npm ci && npm run build && npm pack --workspaces`) or run the [`agbossjs/agboss-examples`](https://github.com/agbossjs/agboss-examples) verification pipeline.
+
+**Create a new project (post-`0.1.0` npm publication):**
 
 ```bash
 npx agboss create my-app
@@ -95,7 +102,7 @@ npm install
 npm test
 ```
 
-**Add to an existing project:**
+**Add to an existing project (post-`0.1.0` npm publication):**
 
 ```bash
 npm install agboss
