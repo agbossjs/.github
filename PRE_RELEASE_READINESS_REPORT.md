@@ -10,9 +10,9 @@
 
 | Repository | Branch | Verified Commit SHA | Open PR (Unmerged) | GitHub Actions Verification Run | CI Status |
 | :--- | :--- | :--- | :--- | :--- | :---: |
-| [`agbossjs/agboss`](https://github.com/agbossjs/agboss) | `chore/pre-release-remediation` | `fe351f66692c5c09ebdb0b7d1fddc578953c96d9` (`fe351f66`) | [PR #465](https://github.com/agbossjs/agboss/pull/465) | [Run #40231329807](https://github.com/agbossjs/agboss/actions/runs/40231329807) (`CI`) | **PASSED** (`GitHub CI verified` + `Locally verified`) |
-| [`agbossjs/agboss-examples`](https://github.com/agbossjs/agboss-examples) | `chore/pre-release-remediation` | `0cbb71ad00d99dc23ec1243f1862103a02a2ab7f` (`0cbb71a`) | [PR #21](https://github.com/agbossjs/agboss-examples/pull/21) | [Run #40231354733](https://github.com/agbossjs/agboss-examples/actions/runs/40231354733) (`push`) · [Run #40231358848](https://github.com/agbossjs/agboss-examples/actions/runs/40231358848) (`pull_request`) | **PASSED** (`GitHub CI verified` + `Locally verified`) |
-| [`agbossjs/agboss.dev`](https://github.com/agbossjs/agboss.dev) | `chore/pre-release-remediation` | `743443ab73bf8296628ad737739fee300e720a23` (`743443a`) | [PR #2](https://github.com/agbossjs/agboss.dev/pull/2) | [Run #40231356604](https://github.com/agbossjs/agboss.dev/actions/runs/40231356604) (`push`) · [Run #40231361685](https://github.com/agbossjs/agboss.dev/actions/runs/40231361685) (`pull_request`) | **PASSED** (`GitHub CI verified` + `Locally verified`) |
+| [`agbossjs/agboss`](https://github.com/agbossjs/agboss) | `chore/pre-release-remediation` | `378658bc4d2fa0574c8bc4a099fef68ec6f89ecc` (`378658bc`) | [PR #465](https://github.com/agbossjs/agboss/pull/465) | [Run #40231602469](https://github.com/agbossjs/agboss/actions/runs/40231602469) (`CI`) | **PASSED** (`GitHub CI verified` + `Locally verified`) |
+| [`agbossjs/agboss-examples`](https://github.com/agbossjs/agboss-examples) | `chore/pre-release-remediation` | `6cb4e492ae4574de1c417423708ce81a0fa9785e` (`6cb4e49`) | [PR #21](https://github.com/agbossjs/agboss-examples/pull/21) | [Run #40231667834](https://github.com/agbossjs/agboss-examples/actions/runs/40231667834) (`push`) · [Run #40231671401](https://github.com/agbossjs/agboss-examples/actions/runs/40231671401) (`pull_request`) | **PASSED** (`GitHub CI verified` + `Locally verified`) |
+| [`agbossjs/agboss.dev`](https://github.com/agbossjs/agboss.dev) | `chore/pre-release-remediation` | `67b5cf4016f410b55e98c9fcf13179cc736f7494` (`67b5cf4`) | [PR #2](https://github.com/agbossjs/agboss.dev/pull/2) | [Run #40231634004](https://github.com/agbossjs/agboss.dev/actions/runs/40231634004) (`push`) · [Run #40231637474](https://github.com/agbossjs/agboss.dev/actions/runs/40231637474) (`pull_request`) | **PASSED** (`GitHub CI verified` + `Locally verified`) |
 | [`agbossjs/.github`](https://github.com/agbossjs/.github) | `chore/pre-release-remediation` | *(this commit)* | [PR #2](https://github.com/agbossjs/.github/pull/2) | N/A (static org profile & policy markdown) | **PASSED** (`Locally verified` + `Manually inspected`) |
 
 ---
@@ -43,18 +43,18 @@
 
 ## 4. Release-Candidate Tarball, Smoke Harness & Proof Report Evidence
 
-### 4.1. Verified Release-Candidate Tarballs (`agboss` `fe351f66692c5c09ebdb0b7d1fddc578953c96d9`)
+### 4.1. Verified Release-Candidate Tarballs (`agboss` `378658bc4d2fa0574c8bc4a099fef68ec6f89ecc`)
 
-- **Framework Commit (`agbossjs/agboss`):** `fe351f66692c5c09ebdb0b7d1fddc578953c96d9`
-- **Examples Commit (`agbossjs/agboss-examples`):** `0cbb71ad00d99dc23ec1243f1862103a02a2ab7f`
-- **Website Commit (`agbossjs/agboss.dev`):** `743443ab73bf8296628ad737739fee300e720a23`
+- **Framework Commit (`agbossjs/agboss`):** `378658bc4d2fa0574c8bc4a099fef68ec6f89ecc`
+- **Examples Commit (`agbossjs/agboss-examples`):** `6cb4e492ae4574de1c417423708ce81a0fa9785e`
+- **Website Commit (`agbossjs/agboss.dev`):** `67b5cf4016f410b55e98c9fcf13179cc736f7494`
 - **`agboss-0.1.0.tgz`:**
   - `integrity`: `sha512-Azu01jlAwG9bDzXTR/wsORpSZi36Y+/pSkh4/5D1rBKXgIQwTHjq63Wzoircq5LaTTnQJe7jX9AV3bCApUrqYQ==`
   - `sha256`: `b6ea25f6cd702e8c60a6dbe5978a6672ae85317de80f6f2c3c6cd384dcf9242a`
   - `entryCount`: `668` files (`bin/agboss.js`, `dist/`, `schema/profile.schema.json`, `skills/agboss/SKILL.md` + 13 reference guides `01-composition-and-architecture.md` .. `13-migrating-from-langgraph.md`, `README.md`, `LICENSE`, `NOTICE`)
 - **`agboss-cli-0.1.0.tgz`:**
-  - `integrity`: `sha512-TBwR10r9+X+3Id7FTqXPtLdrkOlgOINhS8x9XTj5dmoFBYMakGUQtwo1azodaMEMyoQfY9b9UwgGZBJrAzvV7g==`
-  - `sha256`: `b7ec2927c0ed9f829da7bb90dbfcc4f22449871097b22ff66e8d7fd7a04724e1`
+  - `integrity`: `sha512-1RvNx6IDojRYlogHymzp7A1mlk5MROGeRNsZYskz2p46b+9sfzIsJ0Wd/cbkO1NW3YeGn/VJLi+BGmgcVzsaXQ==`
+  - `sha256`: `3294e7e0bbffb22f11c5678b251a0f91153b09567e0a83de054e43abc4f60a3f`
   - `entryCount`: `228` files (`bin/agboss.js`, `dist/cli.js`, `templates/`, `README.md`, `LICENSE`, `NOTICE`)
 
 | Project | Priority | Mode | `npm run check` | `npm test` | `npm run demo` | Project Gate | Primary Proof |
